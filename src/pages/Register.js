@@ -3,13 +3,13 @@ import Logo from '../components/Logo';
 import FormRow from '../components/FormRow';
 import Wrapper from '../assets/wrappers/RegisterPage';
 import Alert from '../components/Alert';
+import { useAppContext } from '../context/appContext';
 
 const initialState = {
     name: '',
     email: '',
     password: '',
-    isMember: true,
-    ShowAlert: false
+    isMember: true
 };
 
 const Register = () => {
@@ -17,8 +17,10 @@ const Register = () => {
         values,
         setValues
     ] = useState(initialState);
+    const { isLoading, showAlert, displayAlert } = useAppContext();
+
     const handleChange = (e) => {
-        console.log(e.target);
+        setValues({ ...values, [e.target.name]: e.target.value });
     };
 
     const toggleMember = () => {
@@ -27,14 +29,20 @@ const Register = () => {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        console.log(e.target);
+        const { name, email, password, isMember } = values;
+
+        if (!email || !password || (isMember && !name)) {
+            displayAlert();
+            return;
+        }
+        console.log(values);
     };
 
     return (
         <Wrapper className='full-page'>
             <form className='form' onSubmit={onSubmit}>
                 <Logo />
-                {values.ShowAlert && <Alert />}
+                {showAlert && <Alert />}
                 <h3>{values.isMember ? 'Login' : 'Register'}</h3>
                 {/* name input for the form */}
                 {!values.isMember && (
