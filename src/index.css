@@ -42,6 +42,7 @@ html {
     --red-dark: #842029;
     --green-light: #d1e7dd;
     --green-dark: #0f5132;
+    --shiny-orange: #ff7722;
 
     /* fonts  */
     --headingFont: 'Roboto Condensed', Sans-Serif;
@@ -315,4 +316,16 @@ ul {
         display: inline-block;
         margin-right: 0.5rem;
     }
+}
+
+/*logo*/
+.logo-reg {
+    width: 20vw;
+    max-width: var(--fixed-width);
+    background: var(--white);
+    border-radius: var(--borderRadius);
+    box-shadow: var(--shadow-2);
+    padding: 2rem 2.5rem;
+    margin: 3rem auto;
+    transition: var(--transition);
 }

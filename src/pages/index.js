@@ -4,4 +4,6 @@ import Landing from './Landing';
 import Error from './Error';
 import Logo from '../components/Logo';
 import FormRow from '../components/FormRow';
-export { FormRow, Logo, Dashboard, Register, Landing, Error };
+import Alert from '../components/Alert';
+
+export { FormRow, Logo, Dashboard, Register, Landing, Error, Alert };
