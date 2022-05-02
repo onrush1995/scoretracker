@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Logo from '../components/Logo';
 import FormRow from '../components/FormRow';
 import Wrapper from '../assets/wrappers/RegisterPage';
@@ -17,7 +17,7 @@ const Register = () => {
         values,
         setValues
     ] = useState(initialState);
-    const { isLoading, showAlert, displayAlert } = useAppContext();
+    const { showAlert, displayAlert } = useAppContext();
 
     const handleChange = (e) => {
         setValues({ ...values, [e.target.name]: e.target.value });
