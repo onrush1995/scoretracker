@@ -12,14 +12,14 @@ const Landing = () => {
             <div className='container page'>
                 <div className='info'>
                     <h1>
-                        job <span>tracking</span> App
+                        Score <span>tracking</span> App
                     </h1>
                     <p>
                         Before you decide which job search website is best for you, learn about the available options &
                         compare the top-rated online utilities for finding employment.
                     </p>
                     <Link to='/register' className='btn btn-hero'>
-                        Login/Register
+                        Enter the Arena
                     </Link>
                 </div>
 
