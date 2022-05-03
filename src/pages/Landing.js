@@ -15,8 +15,8 @@ const Landing = () => {
                         Score <span>tracking</span> App
                     </h1>
                     <p>
-                        Before you decide which job search website is best for you, learn about the available options &
-                        compare the top-rated online utilities for finding employment.
+                        A score tracking app designed for gamers by gamers with a focus on accuracy, ease of use, and a
+                        modern look and feel.
                     </p>
                     <Link to='/register' className='btn btn-hero'>
                         Enter the Arena

@@ -1,7 +1,7 @@
 # Getting Started with Tyoposti
 
 ## Live server 
-https://tyoposti.herokuapp.com/
+https://scoretracker-v2.herokuapp.com/
 
 ## Available Scripts
 

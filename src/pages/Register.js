@@ -1,70 +1,52 @@
-import { useState } from 'react';
-import Logo from '../components/Logo';
-import FormRow from '../components/FormRow';
-import Wrapper from '../assets/wrappers/RegisterPage';
-import Alert from '../components/Alert';
-import { useAppContext } from '../context/appContext';
+import React from 'react';
+import Header from './Header';
+import Player from './Player';
 
-const initialState = {
-    name: '',
-    email: '',
-    password: '',
-    isMember: true
-};
-
-const Register = () => {
-    const [
-        values,
-        setValues
-    ] = useState(initialState);
-    const { showAlert, displayAlert } = useAppContext();
-
-    const handleChange = (e) => {
-        setValues({ ...values, [e.target.name]: e.target.value });
+class Register extends React.Component {
+    state = {
+        players: [
+            {
+                name: 'Teemu',
+                id: 1
+            },
+            {
+                name: 'Moni',
+                id: 2
+            },
+            {
+                name: 'Pekka',
+                id: 3
+            },
+            {
+                name: 'Orushin',
+                id: 4
+            }
+        ]
     };
 
-    const toggleMember = () => {
-        setValues({ ...values, isMember: !values.isMember });
+    handleRemovePlayer = (id) => {
+        this.setState((prevState) => {
+            return {
+                players: prevState.players.filter((p) => p.id !== id)
+            };
+        });
     };
 
-    const onSubmit = (e) => {
-        e.preventDefault();
-        const { name, email, password, isMember } = values;
+    render() {
+        return (
+            <div className='scoreboard'>
+                <Header title='Scoreboard' totalPlayers={this.state.players.length} />
+                {this.state.players.map((player) => (
+                    <Player
+                        name={player.name}
+                        id={player.id}
+                        key={player.id.toString()}
+                        removePlayer={this.handleRemovePlayer}
+                    />
+                ))}
+            </div>
+        );
+    }
+}
 
-        if (!email || !password || (isMember && !name)) {
-            displayAlert();
-            return;
-        }
-        console.log(values);
-    };
-
-    return (
-        <Wrapper className='full-page'>
-            <form className='form' onSubmit={onSubmit}>
-                <Logo />
-                {showAlert && <Alert />}
-                <h3>{values.isMember ? 'Login' : 'Register'}</h3>
-                {/* name input for the form */}
-                {!values.isMember && (
-                    <FormRow type='text' name='name' value={values.name} handleChange={handleChange} />
-                )}
-
-                {/* email input for the form  */}
-                <FormRow type='email' name='email' value={values.email} handleChange={handleChange} />
-
-                {/* password for the form  */}
-                <FormRow type='password' name='password' value={values.password} handleChange={handleChange} />
-                <button type='sumbit' className='btn btn-block'>
-                    Submit
-                </button>
-                <p>
-                    {values.isMember ? 'Not a member yet?' : 'Already a member?'}
-                    <button type='button' onClick={toggleMember} className='member-btn'>
-                        {values.isMember ? 'Register' : 'Login'}
-                    </button>
-                </p>
-            </form>
-        </Wrapper>
-    );
-};
 export default Register;
