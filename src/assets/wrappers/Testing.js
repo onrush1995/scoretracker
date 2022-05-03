@@ -6,7 +6,7 @@ const Wrapper = styled.main`
         max-width: var(--max-width);
         margin: 0 auto;
         height: var(--nav-height);
-        display: flex;
+        display: block;
         align-items: center;
     }
     .page {
